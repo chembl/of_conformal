@@ -17,7 +17,7 @@ faas-cli build -f of_conformal.yml
 faas-cli deploy -f of_conformal.yml
 ```
 
-## Run it locally (image available in DockerHub)
+## Run it locally (image available in [DockerHub](https://hub.docker.com/r/chembl/mcp))
 
 Since it needs to load the models into memory it may take few minutes to start properly replying.
 
