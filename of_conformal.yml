@@ -1,0 +1,9 @@
+provider:
+  name: faas
+  gateway: http://openfaas-k8s:31112
+
+functions:
+  mcp:
+    lang: Dockerfile
+    handler: ./function
+    image: chembl/mcp
