@@ -51,7 +51,6 @@ dependencies:
 - intel-openmp=2019.4=243
 - itsdangerous=1.1.0=py_0
 - jinja2=2.10.3=py_0
-- joblib=0.14.1=py_0
 - libedit=3.1.20181209=hc058e9b_0
 - libffi=3.2.1=hd88cf55_4
 - libgcc-ng=9.1.0=hdf63c60_0
@@ -84,3 +83,5 @@ dependencies:
 - wheel=0.33.6=py37_0
 - xz=5.2.4=h14c3975_4
 - zlib=1.2.11=h7b6447c_3
+- joblib=0.13.2=py_0
+- dill=0.2.9=py37_0

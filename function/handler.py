@@ -11,21 +11,20 @@ from .selected_targets import t_dict, pn_dict
 function_root = os.environ.get("function_root")
 
 N_BITS = 1024
-INPUT_DIR = "/home/app/models"
+INPUT_DIR = "/home/app/chembl_mcp_models"
 
 
 # load models and scalers ----------------------------------------------------
 
 models = {}
 scalers = {}
-for target in os.listdir(f"{INPUT_DIR}/"):
-    if target in t_dict.keys():
-        # load models
-        model_path = f"{INPUT_DIR}/{target}/{target}_conformal_prediction_model"
-        models[target] = joblib.load(model_path)
-        # load scalers
-        scaler_path = f"{INPUT_DIR}/scalers/{target}_scaler.pkl"
-        scalers[target] = pickle.load(open(scaler_path, "rb"))
+for target in t_dict.keys():
+    # load models
+    model_path = f"{INPUT_DIR}/models/{target}/{target}_conformal_prediction_model"
+    models[target] = joblib.load(model_path)
+    # load scalers
+    scaler_path = f"{INPUT_DIR}/scalers/{target}_scaler.pkl"
+    scalers[target] = pickle.load(open(scaler_path, "rb"))
 
 # ----------------------------------------------------------------------------
 

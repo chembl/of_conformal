@@ -32,9 +32,13 @@ RUN bash /tmp/miniconda.sh -bfp $HOME/conda &&\
 # activate env (add conda env bin to path)
 ENV PATH $HOME/conda/envs/openfaas_tp/bin:$PATH
 
-# copy models folder
-COPY models /home/app/models
-COPY scalers /home/app/models/scalers
+# install modified nonconformist
+RUN pip install https://github.com/nbosc/nonconformist/archive/sk_fixed.zip 
+
+# get models and scalers
+RUN curl -sSL ftp://ftp.ebi.ac.uk/pub/databases/chembl/target_predictions/MCP/latest -o models.tar.gz \
+    && tar -zxvf models.tar.gz \
+    && rm models.tar.gz
 
 COPY index.py .
 
@@ -43,11 +47,6 @@ RUN touch ./function/__init__.py
 
 COPY handler.py ./function/handler.py
 COPY selected_targets.py ./function/selected_targets.py
-
-# install modified nonconformist
-RUN pip install https://github.com/nbosc/nonconformist/archive/sk_fixed.zip && \
-    pip install joblib==0.13.2 && \
-    pip install dill==0.2.9
 
 # Set environment variables
 ENV fprocess="python index.py"
