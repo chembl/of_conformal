@@ -1,6 +1,6 @@
 provider:
   name: faas
-  gateway: http://openfaas-k8s:31112
+  gateway: http://openfaas-k8s-hh:31112
 
 functions:
   mcp:
