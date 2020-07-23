@@ -6,7 +6,7 @@ from rdkit.Chem import Descriptors, AllChem as Chem, DataStructs
 import numpy as np
 import joblib
 import pickle
-from .selected_targets import t_dict, pn_dict
+from .selected_targets import t_dict, pn_dict, th_dict
 
 function_root = os.environ.get("function_root")
 
@@ -64,6 +64,7 @@ def predict(descriptors):
             "70%": pred_category(p0, p1, 0.3),
             "80%": pred_category(p0, p1, 0.2),
             "90%": pred_category(p0, p1, 0.1),
+            "threshold": th_dict[target]
         }
         predictions.append(res)
     return predictions
