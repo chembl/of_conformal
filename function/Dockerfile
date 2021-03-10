@@ -37,8 +37,8 @@ ENV PATH $HOME/conda/envs/openfaas_tp/bin:$PATH
 #     && tar -zxvf models.tar.gz \
 #     && rm models.tar.gz
 
-COPY chembl27_mcp_models.tar.gz models.tar.gz
-    && tar -zxvf models.tar.gz
+COPY chembl27_mcp_models.tar.gz models.tar.gz \
+    && tar -zxvf models.tar.gz \
     && rm models.tar.gz
 
 COPY index.py .
