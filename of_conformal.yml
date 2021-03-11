@@ -6,4 +6,4 @@ functions:
   mcp:
     lang: Dockerfile
     handler: ./function
-    image: chembl/mcp:25
+    image: chembl/mcp:27
