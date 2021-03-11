@@ -94,5 +94,3 @@ dependencies:
   - xz=5.2.4=h14c3975_4
   - zlib=1.2.11=h7b6447c_3
   - zstd=1.4.4=h3b9ef0a_1
-  - pip:
-    - nonconformist==2.1.0

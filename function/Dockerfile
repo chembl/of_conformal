@@ -32,14 +32,13 @@ RUN bash /tmp/miniconda.sh -bfp $HOME/conda &&\
 # activate env (add conda env bin to path)
 ENV PATH $HOME/conda/envs/openfaas_tp/bin:$PATH
 
-# # get models and scalers
-# RUN curl -sSL ftp://ftp.ebi.ac.uk/pub/databases/chembl/target_predictions/MCP/latest -o models.tar.gz \
-#     && tar -zxvf models.tar.gz \
-#     && rm models.tar.gz
-
-COPY chembl27_mcp_models.tar.gz models.tar.gz \
+# get models and scalers
+RUN curl -sSL ftp://ftp.ebi.ac.uk/pub/databases/chembl/target_predictions/MCP/chembl_27_mcp_models.tar.gz -o models.tar.gz \
     && tar -zxvf models.tar.gz \
     && rm models.tar.gz
+
+# install updated nonconformist
+RUN pip install https://github.com/josecarlosgomezt/nonconformist/archive/master.zip
 
 COPY index.py .
 

@@ -6,7 +6,7 @@ from rdkit.Chem import Descriptors, AllChem as Chem, DataStructs
 import numpy as np
 import joblib
 import pickle
-from .selected_targets import t_dict, pn_dict, th_dict
+from .selected_targets import o_dict, pn_dict, th_dict
 
 function_root = os.environ.get("function_root")
 
@@ -18,7 +18,7 @@ INPUT_DIR = "/home/app/chembl_mcp_models"
 
 models = {}
 scalers = {}
-for target in t_dict.keys():
+for target in pn_dict.keys():
     # load models
     model_path = f"{INPUT_DIR}/models/{target}/{target}_conformal_prediction_model"
     models[target] = joblib.load(model_path)
@@ -59,7 +59,7 @@ def predict(descriptors):
         # format output for a single prediction
         res = {
             "target_chemblid": target,
-            "organism": t_dict[target],
+            "organism": o_dict[target],
             "pref_name": pn_dict[target],
             "70%": pred_category(p0, p1, 0.3),
             "80%": pred_category(p0, p1, 0.2),
